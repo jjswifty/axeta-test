@@ -1,12 +1,13 @@
+import { Skill } from './../interfaces/Skill';
 import { StoreonModule } from 'storeon'
 
 export type SkillsState = {
-    skills: string[]
+    skills: Skill[]
 }
 
 export type SkillsEvents = {
     'skills/set/skill': {
-        newSkill: string
+        newSkill: Skill
     }
     'skills/remove/skill': {
         index: number
@@ -16,7 +17,20 @@ export type SkillsEvents = {
 export const skillsModule: StoreonModule<SkillsState, SkillsEvents> = store => {
 
     store.on('@init', () => ({
-        skills: ['PHP', 'Ruby', 'Java Script'],
+        skills: [
+            {
+                skill: 'PHP',
+                experience: 6,
+            }, 
+            {
+                skill: 'Ruby',
+                experience: 2,
+            }, 
+            {
+                skill: 'Java Script',
+                experience: 4.5
+            }
+        ],
     }))
 
     store.on('skills/set/skill', (state, event) => ({
@@ -27,7 +41,7 @@ export const skillsModule: StoreonModule<SkillsState, SkillsEvents> = store => {
     }))
 
     store.on('skills/remove/skill', (state, event) => ({
-        skills: state.skills.filter((e, i) => i !== event.index)
+        skills: state.skills.filter((_, i) => i !== event.index)
     }))
 
 } 
