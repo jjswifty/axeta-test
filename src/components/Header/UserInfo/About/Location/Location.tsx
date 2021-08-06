@@ -1,4 +1,5 @@
-import { useState } from "react"
+import React, { useState } from "react"
+import { geocodeService } from "../../../../../services"
 import { isValueLetter } from "../../../../../utils/regexUtils"
 
 export const Location = () => {
@@ -10,5 +11,9 @@ export const Location = () => {
         else setLocation(e.target.value)
     }
 
-    return <input value={location} onInput={onInput}/>
+    const onKeyDown = (e: React.KeyboardEvent) => {
+        if (e.key === 'Enter') geocodeService.geocode(location)
+    }
+
+    return <input value={location} onInput={onInput} onKeyDown={onKeyDown}/>
 }

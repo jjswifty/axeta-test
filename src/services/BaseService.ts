@@ -7,9 +7,9 @@ class BaseService {
         this.instance = this.httpClient.instance
 
         this.instance.interceptors.request.use(config => {
-            const token = process.env.REACT_APP_API_TOKEN
-            config.headers["Authorization"] = `Bearer ${token}`
-
+            const token = process.env.REACT_APP_API_TOKEN as string
+            config.url += `&format=json&apikey=${token}`
+            //console.log(config)
             return config
         },
         error => {
