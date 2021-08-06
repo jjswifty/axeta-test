@@ -19,7 +19,6 @@ class GeocodeService extends BaseService {
 
         return data
     }
-
 }
 
 export default new GeocodeService(new HttpClient(Config.API_URL))

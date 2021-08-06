@@ -12,6 +12,7 @@
     "react-dom": "^17.0.2",
     "react-scripts": "4.0.3",
     "react-yandex-maps": "^4.6.0",
+    "storeon": "^3.1.4",
     "web-vitals": "^1.0.1"
   },
   "scripts": {

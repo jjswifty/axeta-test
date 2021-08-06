@@ -1,6 +1,6 @@
 import { useContext } from "react"
 import { useState } from "react"
-import { SkillsContext } from "../../../../contexts"
+
 
 export const Skills = () => {
 
