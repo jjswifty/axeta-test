@@ -8,10 +8,7 @@ export const Location = () => {
     const onInput = (e: React.ChangeEvent<HTMLInputElement>) => {
         if (!isValueLetter(e.target.value)) e.preventDefault()
         else setLocation(e.target.value)
-        console.log(e.target.value)
     }
 
-    return (
-        <input value={location} onInput={onInput}/>
-    )
+    return <input value={location} onInput={onInput}/>
 }
