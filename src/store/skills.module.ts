@@ -23,13 +23,13 @@ export const skillsModule: StoreonModule<SkillsState, SkillsEvents> = store => {
                 experience: 6,
             }, 
             {
+                skill: 'Java Script',
+                experience: 4.5
+            },
+            {
                 skill: 'Ruby',
                 experience: 2,
             }, 
-            {
-                skill: 'Java Script',
-                experience: 4.5
-            }
         ],
     }))
 
@@ -37,7 +37,7 @@ export const skillsModule: StoreonModule<SkillsState, SkillsEvents> = store => {
         skills: [
             ...state.skills,
             event.newSkill
-        ]
+        ].sort((a, b) => b.experience - a.experience)
     }))
 
     store.on('skills/remove/skill', (state, event) => ({
