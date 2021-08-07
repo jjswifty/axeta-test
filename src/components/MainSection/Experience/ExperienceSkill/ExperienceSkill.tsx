@@ -1,7 +1,9 @@
 import React, { useState } from "react"
+import { useEffect } from "react"
 import { useStoreon } from "storeon/react"
 import { SkillsEvents, SkillsState } from "../../../../store/skills.module"
 import { isValueNumber } from "../../../../utils/regexUtils"
+import s from './ExperienceSkill.module.sass'
 
 interface ExperienceSkillProps {
     skill: string
@@ -11,14 +13,19 @@ interface ExperienceSkillProps {
 
 export const ExperienceSkill = (props: ExperienceSkillProps) => {
 
-    const { dispatch, skills } = useStoreon<SkillsState, SkillsEvents>('skills')
+    const { dispatch } = useStoreon<SkillsState, SkillsEvents>('skills')
 
     const [experience, setExperience] = useState(props.experience)
 
+    useEffect(() => {
+        setExperience(props.experience)
+    }, [props.experience])
+
     const onInput = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setExperience(Number(e.target.value))
+        if (!isValueNumber(Number(e.target.value))) e.preventDefault()
+        else setExperience(Number(e.target.value))
     }
-    console.log(skills, 'from Component')
+
     const onKeyDown = (e: React.KeyboardEvent) => {
         if (e.key === 'Enter') {
             if (!isValueNumber(experience)) return
@@ -29,12 +36,13 @@ export const ExperienceSkill = (props: ExperienceSkillProps) => {
                 },
                 index: props.index
             })
-            console.log(skills, 'from onKeyDown')
         }
     }
 
-    return <div>
+    return <div className={s.wrapper}>
         <p>-{props.skill}</p> 
-        <input value={experience} onKeyDown={onKeyDown} onInput={onInput}/>
+        <input value={experience} 
+            onKeyDown={onKeyDown} 
+            onInput={onInput}/>
     </div>
 }

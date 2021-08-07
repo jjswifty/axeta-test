@@ -3,6 +3,7 @@ import { useStoreon } from "storeon/react"
 import { geocodeService } from "../../../../../services"
 import { LocationEvents, LocationState } from "../../../../../store/location.module"
 import { isValueLetter } from "../../../../../utils/regexUtils"
+import s from './Location.module.sass'
 
 export const Location = () => {
 
@@ -27,6 +28,7 @@ export const Location = () => {
 
     return <input value={location} 
         onInput={onInput} 
-        style={{backgroundColor: isValid ? 'green' : 'red'}}
-        onKeyDown={onKeyDown} />
+        //style={{backgroundColor: isValid ? 'green' : 'red'}}
+        onKeyDown={onKeyDown} 
+        className={`${s.location} ${s.textInput}`}/>
 }

@@ -1,10 +1,14 @@
 import { useState } from "react"
 import { isValueLetter } from "../../../../utils/regexUtils"
+import { Location } from "./Location"
+import s from './About.module.sass'
+import flag from './../../../../assets/img/flag.png'
 
 export const About = () => {
 
     const [name, setName] = useState('John Smith')
     const [isValid, setIsValid] = useState(true)
+    
     const onInput = (e: React.ChangeEvent<HTMLInputElement>) => {
         if (!isValueLetter(e.target.value)) setIsValid(false)
         else setIsValid(true)
@@ -13,8 +17,17 @@ export const About = () => {
     }
 
     return (
-        <div>
-            <input value={name} onInput={onInput} style={{backgroundColor: isValid ? 'green' : 'red'}}/>
+        <div className={s.wrapper}>
+            <input className={s.name} 
+                value={name} 
+                onInput={onInput} 
+                style={{backgroundColor: isValid ? 'green' : 'red'}}
+            />
+            <Location />
+            <div className={s.language}>
+                <img src={flag} alt="English Flag"/>
+                <p>English</p>
+            </div>
         </div>
     )
 }

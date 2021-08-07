@@ -9,7 +9,12 @@ export const Experience = () => {
 
     return <div>
         {
-            skills.map((e, i) => <ExperienceSkill experience={e.experience} index={i} skill={e.skill} key={i}/>)
+            skills.map((e, i) => <ExperienceSkill 
+                experience={e.experience} 
+                index={i} 
+                skill={e.skill} 
+                key={i}/>
+            )
         }
     </div>
 }

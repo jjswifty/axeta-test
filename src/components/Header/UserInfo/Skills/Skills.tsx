@@ -6,7 +6,7 @@ import { isValueLetter } from "../../../../utils/regexUtils"
 export const Skills = () => {
 
     const { dispatch, skills } = useStoreon('skills')
-    const [isValid, setIsValid] = useState(false)
+    const [isValid, setIsValid] = useState(true)
     const [isEdit, setIsEdit] = useState(false)
     const [newSkill, setNewSkill] = useState({
         skill: '',
