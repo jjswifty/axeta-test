@@ -26,9 +26,16 @@ export const Location = () => {
         }
     }
 
-    return <input value={location} 
-        onInput={onInput} 
-        //style={{backgroundColor: isValid ? 'green' : 'red'}}
-        onKeyDown={onKeyDown} 
-        className={`${s.location} ${s.textInput}`}/>
+    return ( 
+        <div className={s.wrapper}>
+            <span className={`${!isValid && s.inputIncorrect}`}>
+                <input value={location} 
+                onInput={onInput} 
+                onKeyDown={onKeyDown} 
+                className={`${s.location} ${s.textInput}`}/>
+            </span>
+            {!isValid && <p className={s.errDesc}>Error Description</p>}
+        </div>
+        
+    )
 }

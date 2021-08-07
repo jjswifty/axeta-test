@@ -7,14 +7,36 @@
     line-height: 24px
 
 
-
 .textInput
     background: rgba(0, 0, 0, 0)
     border: none
     outline: none
-    width: 100%
+    min-width: 360px
+
     &:focus
         background: rgba(0, 0, 0, 0.06)
-        border-bottom: 1px solid #EB5757
-    &::after
-        
+
+.inputIncorrect
+    position: relative
+    border-bottom: 1px solid #EB5757
+    &:after
+        right: 6px
+        top: 4px
+        position: absolute
+        content: url('./../../../../../assets/img/error.svg') 
+
+.errDesc
+    color: #EB5757
+    min-width: 105px
+    font:
+        family: Roboto
+        style: normal
+        weight: normal
+        size: 14px
+    line-height: 20px
+
+.wrapper
+    display: flex
+    width: fit-content
+    span
+        width: 100%

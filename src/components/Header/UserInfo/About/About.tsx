@@ -21,7 +21,7 @@ export const About = () => {
             <input className={s.name} 
                 value={name} 
                 onInput={onInput} 
-                style={{backgroundColor: isValid ? 'green' : 'red'}}
+                //style={{backgroundColor: isValid ? 'green' : 'red'}}
             />
             <Location />
             <div className={s.language}>
