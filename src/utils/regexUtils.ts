@@ -1,3 +1,3 @@
 export const isValueLetter = (value: string) => {
-    return (/^([а-яё\s,]+|[a-z\s,]+)$/iu).test(value)
+    return (/^([а-яё\s,\b]+|[a-z\s,\b]+)$/iu).test(value)
 }

@@ -13,15 +13,15 @@ export const Skills = () => {
     } as Skill)
 
     const onInput = (e: React.ChangeEvent<HTMLInputElement>) => {
-        if (!isValueLetter(e.target.value)) e.preventDefault()
-        else setNewSkill({
+        setNewSkill({
             skill: e.target.value,
             experience: 0
         })
     }
 
     const onKeyDown = (e: React.KeyboardEvent) => {
-        if (e.key === 'Enter' && newSkill.skill.length > 0) {
+        if (e.key === 'Enter') {
+            if (!isValueLetter(newSkill.skill)) return
             dispatch('skills/set/skill', {newSkill})
             setNewSkill({
                 skill: '',
