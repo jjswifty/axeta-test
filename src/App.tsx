@@ -4,6 +4,7 @@ import { MainSection } from "./components/MainSection"
 import { YMaps } from 'react-yandex-maps'
 import { store } from "./store"
 import { StoreContext } from "storeon/react"
+import { Layout } from "./components/Layout"
 
 
 const App = () => {
@@ -13,7 +14,9 @@ const App = () => {
                 <div className="App">
                     <Header />
                     <main>
-                        <MainSection />
+                        <Layout>
+                            <MainSection />
+                        </Layout>
                     </main>
                 </div>
             </StoreContext.Provider>

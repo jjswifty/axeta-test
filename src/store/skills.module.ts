@@ -12,6 +12,10 @@ export type SkillsEvents = {
     'skills/remove/skill': {
         index: number
     }
+    'skills/change/skill': {
+        newSkill: Skill
+        index: number
+    }
 }
 
 export const skillsModule: StoreonModule<SkillsState, SkillsEvents> = store => {
@@ -43,5 +47,13 @@ export const skillsModule: StoreonModule<SkillsState, SkillsEvents> = store => {
     store.on('skills/remove/skill', (state, event) => ({
         skills: state.skills.filter((_, i) => i !== event.index)
     }))
+
+    store.on('skills/change/skill', (state, event) => {
+        state.skills[event.index] = event.newSkill
+        const sortedState = state.skills.sort((a, b) => b.experience - a.experience)
+        return {
+            skills: sortedState
+        }
+    })
 
 } 

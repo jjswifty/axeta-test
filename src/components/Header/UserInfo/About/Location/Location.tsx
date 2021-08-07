@@ -8,8 +8,11 @@ export const Location = () => {
 
     const [location, setLocation] = useState('Portland, Oregon, USA')
     const { dispatch } = useStoreon<LocationState, LocationEvents>('location')
+    const [isValid, setIsValid] = useState(true)
 
     const onInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+        if (!isValueLetter(e.target.value)) setIsValid(false)
+        else setIsValid(true)
         setLocation(e.target.value)
     }
 
@@ -17,11 +20,13 @@ export const Location = () => {
         if (e.key === 'Enter') {
             if (!isValueLetter(location)) return
             const coordinates = await geocodeService.geocode(location)
-            dispatch('location/set/location', {location: coordinates})
+            if (!coordinates) setIsValid(false)
+            else dispatch('location/set/location', {location: coordinates})
         }
     }
 
     return <input value={location} 
         onInput={onInput} 
-        onKeyDown={onKeyDown}/>
+        style={{backgroundColor: isValid ? 'green' : 'red'}}
+        onKeyDown={onKeyDown} />
 }

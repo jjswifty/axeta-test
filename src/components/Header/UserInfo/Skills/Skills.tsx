@@ -6,13 +6,17 @@ import { isValueLetter } from "../../../../utils/regexUtils"
 export const Skills = () => {
 
     const { dispatch, skills } = useStoreon('skills')
+    const [isValid, setIsValid] = useState(false)
     const [isEdit, setIsEdit] = useState(false)
     const [newSkill, setNewSkill] = useState({
         skill: '',
         experience: 0
     } as Skill)
 
+
     const onInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+        if (!isValueLetter(e.target.value)) setIsValid(false)
+        else setIsValid(true)
         setNewSkill({
             skill: e.target.value,
             experience: 0
@@ -27,6 +31,8 @@ export const Skills = () => {
                 skill: '',
                 experience: 0
             })
+            setIsValid(false)
+            setIsEdit(false)
         }
     }
 
@@ -38,7 +44,10 @@ export const Skills = () => {
                 })
             }
             {
-                isEdit ? <input value={newSkill.skill} onInput={onInput} onKeyDown={onKeyDown}/> 
+                isEdit ? <input value={newSkill.skill} 
+                    onInput={onInput} 
+                    onKeyDown={onKeyDown} 
+                    style={{backgroundColor: isValid ? 'green' : 'red'}}/> 
                 : <button onClick={() => setIsEdit(true)}>+</button>
             }
         </div>
