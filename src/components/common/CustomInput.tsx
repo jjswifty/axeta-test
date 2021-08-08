@@ -30,6 +30,11 @@ export const CustomInput = ({ isValid, onInput, onKeyDown, value, inputCustomSty
         return `${inputCustomStyle ? inputCustomStyle : ''} textInput ${isValid ? 'inputFocusCorrect' : 'inputFocusIncorrect'}`
     }
 
+    const errorDesc = () => {
+        if (isValid === null) return 
+        return isValid ? '' : <span className="errDesc"></span> 
+    }
+
     return <span className={getSpanClassName()}>
         <input value={inputValue} 
             onInput={onInput} 
@@ -38,6 +43,10 @@ export const CustomInput = ({ isValid, onInput, onKeyDown, value, inputCustomSty
             onFocus={onFocus}
             onBlur={onBlur}
             ref={inputRef}
+            style={{position: 'relative'}}
         />
+        {
+            errorDesc()
+        }
     </span>
 }

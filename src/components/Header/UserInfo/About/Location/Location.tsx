@@ -35,7 +35,6 @@ export const Location = () => {
                 onInput={onInput} 
                 onKeyDown={onKeyDown}
             />
-            {!isValid && <p className={s.errDesc}>Error Description</p>}
         </div>
         
     )
