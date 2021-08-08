@@ -20,21 +20,21 @@ export const CustomInput = ({ isValid, onInput, onKeyDown, value, inputCustomSty
         setValue(value)
     }, [value])
 
-    const spanClassName = () => {
+    const getSpanClassName = () => {
         if (isValid === null) return ''
         return isValid ? 'inputCorrect' : 'inputIncorrect'
     }
 
-    const inputClassName = () => {
+    const getInputClassName = () => {
         if (isValid === null) return `${inputCustomStyle ? inputCustomStyle : ''} textInput`
         return `${inputCustomStyle ? inputCustomStyle : ''} textInput ${isValid ? 'inputFocusCorrect' : 'inputFocusIncorrect'}`
     }
 
-    return <span className={spanClassName()}>
+    return <span className={getSpanClassName()}>
         <input value={inputValue} 
             onInput={onInput} 
             onKeyDown={onKeyDown} 
-            className={inputClassName()}
+            className={getInputClassName()}
             onFocus={onFocus}
             onBlur={onBlur}
             ref={inputRef}
