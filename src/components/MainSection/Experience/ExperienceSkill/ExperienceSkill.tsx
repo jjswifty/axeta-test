@@ -3,6 +3,7 @@ import { useEffect } from "react"
 import { useStoreon } from "storeon/react"
 import { SkillsEvents, SkillsState } from "../../../../store/skills.module"
 import { isValueNumber } from "../../../../utils/regexUtils"
+import { CustomInput } from "../../../common/CustomInput"
 import s from './ExperienceSkill.module.sass'
 
 interface ExperienceSkillProps {
@@ -17,6 +18,7 @@ export const ExperienceSkill = (props: ExperienceSkillProps) => {
 
     const [experience, setExperience] = useState(props.experience)
     const [isEdit, setIsEdit] = useState(false)
+    const [isValid, setIsValid] = useState(true)
 
     useEffect(() => {
         setExperience(props.experience)
@@ -27,26 +29,43 @@ export const ExperienceSkill = (props: ExperienceSkillProps) => {
         else setExperience(Number(e.target.value))
     }
 
+    const validateAndDispatch = () => {
+        if (!isValueNumber(experience)) return
+        dispatch('skills/change/skill', {
+            newSkill: {
+                experience,
+                skill: props.skill
+            },
+            index: props.index
+        })
+        setIsEdit(false)
+    }
+
     const onKeyDown = (e: React.KeyboardEvent) => {
         setIsEdit(true)
         if (e.key === 'Enter') {
-            if (!isValueNumber(experience)) return
-            dispatch('skills/change/skill', {
-                newSkill: {
-                    experience,
-                    skill: props.skill
-                },
-                index: props.index
-            })
-            setIsEdit(false)
+            validateAndDispatch()
         }
+    }
+
+    const onFocus = () => {
+        setIsEdit(true)
+        setExperience(Number(experience.toString().split(' ')[0]))
+    }
+
+    const onBlur = () => {
+        validateAndDispatch()
+        setIsEdit(false)
     }
 
     return <div className={s.wrapper}>
         <p className={s.skill}>{props.skill}</p> 
-        <input value={experience} 
+        <CustomInput inputCustomStyle={s.input}
+            value={isEdit ? experience.toString() : experience + ' years'} 
+            onFocus={onFocus}
             onKeyDown={onKeyDown} 
-            onInput={onInput}/>
-        {!isEdit && <p className={s.years}>years</p>}
+            onInput={onInput}
+            onBlur={onBlur}
+            />
     </div>
 }
