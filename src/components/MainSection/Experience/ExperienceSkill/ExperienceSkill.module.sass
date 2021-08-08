@@ -1,2 +1,18 @@
 .wrapper
     display: flex
+    padding-left: 19px
+    align-items: center
+    .skill
+        font-weight: bold
+        font-size: 16px
+        line-height: 20px
+        position: relative
+        margin: 4px 0
+        &::before
+            content: '–'
+            left: -19px
+            position: absolute
+    input
+        margin-left: 8px
+        max-width: 50px
+        max-height: 20px

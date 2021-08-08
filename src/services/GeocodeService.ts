@@ -1,16 +1,14 @@
 import { Config } from './../modules/Constants';
 import { HttpClient } from "../modules";
 import BaseService from "./BaseService";
+import { Location } from '../interfaces/Location';
 
 class GeocodeService extends BaseService {
 
     public geocode = async (params: string) => {
         
         const response = await this.instance.get(`?geocode=${params.split(' ').join('+')}`)
-        const data = {} as {
-            latitude: number
-            longitude: number
-        }
+        const data = {} as Location
         // апи яндекса в этом плане подвело конечно, апи ключ не в хэдере
         // и возвращаемое сервером значение так же не такое, как в доке, поэтому пришлось далеко залазить
 

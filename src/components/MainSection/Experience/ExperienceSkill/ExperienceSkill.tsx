@@ -16,6 +16,7 @@ export const ExperienceSkill = (props: ExperienceSkillProps) => {
     const { dispatch } = useStoreon<SkillsState, SkillsEvents>('skills')
 
     const [experience, setExperience] = useState(props.experience)
+    const [isEdit, setIsEdit] = useState(false)
 
     useEffect(() => {
         setExperience(props.experience)
@@ -27,6 +28,7 @@ export const ExperienceSkill = (props: ExperienceSkillProps) => {
     }
 
     const onKeyDown = (e: React.KeyboardEvent) => {
+        setIsEdit(true)
         if (e.key === 'Enter') {
             if (!isValueNumber(experience)) return
             dispatch('skills/change/skill', {
@@ -36,13 +38,15 @@ export const ExperienceSkill = (props: ExperienceSkillProps) => {
                 },
                 index: props.index
             })
+            setIsEdit(false)
         }
     }
 
     return <div className={s.wrapper}>
-        <p>-{props.skill}</p> 
+        <p className={s.skill}>{props.skill}</p> 
         <input value={experience} 
             onKeyDown={onKeyDown} 
             onInput={onInput}/>
+        {!isEdit && <p className={s.years}>years</p>}
     </div>
 }

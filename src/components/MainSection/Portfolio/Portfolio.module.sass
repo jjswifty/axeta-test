@@ -1,0 +1,29 @@
+.wrapper
+    padding-right: 10px
+    max-width: 270px
+    h1
+        font-weight: 500
+        line-height: 24px
+        padding-bottom: 24px
+    .links
+        display: flex
+        flex-direction: column
+        padding-left: 19px
+        .link
+            text-decoration: none
+            font:
+                weight: 400
+                size: 16px
+            line-height: 20px
+            margin: 8px 0
+            position: relative
+            color: #3483CC
+            &:hover
+                color: #EB5757
+            &::before
+                content: '–'
+                left: -19px
+                position: absolute
+                color: black
+                &:hover
+                    color: #3483CC
