@@ -3,6 +3,7 @@ import { isValueLetter } from "../../../../utils/regexUtils"
 import { Location } from "./Location"
 import s from './About.module.sass'
 import flag from './../../../../assets/img/flag.png'
+import { CustomInput } from "../../../common/CustomInput"
 
 export const About = () => {
 
@@ -18,7 +19,9 @@ export const About = () => {
 
     return (
         <div className={s.wrapper}>
-            <input className={s.name} 
+            <CustomInput inputCustomStyle={s.name}
+                isValid={isValid}
+                
                 value={name} 
                 onInput={onInput} 
                 //style={{backgroundColor: isValid ? 'green' : 'red'}}

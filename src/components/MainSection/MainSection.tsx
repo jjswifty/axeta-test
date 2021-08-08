@@ -5,6 +5,8 @@ import s from './MainSection.module.sass'
 import { SampleCode } from "./SampleCode"
 import { Availability } from "./Availability"
 import { PreferredEnviroment } from "./PreferredEnvironment"
+import { ClientsQoute } from "./ClientsQoute"
+import { AmazingQoute } from "./AmazingQoute"
 
 export const MainSection = () => {
     return <section className={s.wrapper}>
@@ -16,13 +18,17 @@ export const MainSection = () => {
             
             <div className={s.codeSection}>
                 <SampleCode />
-                <div>
+                <div className={s.info}>
                     <Availability/>
                     <PreferredEnviroment />
                 </div>
             </div>
         </div>
         <div className={s.bottomInfo}>
+            <div className={s.quotesSection}>
+                <ClientsQoute />
+                <AmazingQoute />
+            </div>
             <div className={s.mapSection}>
                 <YMap />
             </div>

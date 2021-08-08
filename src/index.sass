@@ -69,6 +69,37 @@ body
 		size: 16px
 	line-height: 20px
 
+.inputCorrect
+    position: relative
+    &:focus-within:after
+        right: 6px
+        top: 4px
+        position: absolute
+        content: url('./assets/img/success.svg') 
+
+.inputIncorrect
+    position: relative
+    &:after
+        right: 6px
+        top: 4px
+        position: absolute
+        content: url('./assets/img/error.svg') 
+
+.textInput
+    background: rgba(0, 0, 0, 0)
+    border: none
+    outline: none
+
+.inputFocusCorrect
+	&:focus
+        border-bottom: 1px solid black
+        background: rgba(0, 0, 0, 0.06)
+
+.inputFocusIncorrect
+	background: rgba(0, 0, 0, 0.06)
+	border-bottom: 1px solid #EB5757
+
+
 
 
 

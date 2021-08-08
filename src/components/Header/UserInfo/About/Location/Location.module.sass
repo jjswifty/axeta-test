@@ -6,24 +6,11 @@
         size: 16px
     line-height: 24px
 
-
-.textInput
-    background: rgba(0, 0, 0, 0)
-    border: none
-    outline: none
-    min-width: 360px
-
-    &:focus
-        background: rgba(0, 0, 0, 0.06)
-
-.inputIncorrect
-    position: relative
-    border-bottom: 1px solid #EB5757
-    &:after
-        right: 6px
-        top: 4px
-        position: absolute
-        content: url('./../../../../../assets/img/error.svg') 
+.wrapper
+    display: flex
+    width: fit-content
+    span
+        width: 100%
 
 .errDesc
     color: #EB5757
@@ -34,9 +21,3 @@
         weight: normal
         size: 14px
     line-height: 20px
-
-.wrapper
-    display: flex
-    width: fit-content
-    span
-        width: 100%
