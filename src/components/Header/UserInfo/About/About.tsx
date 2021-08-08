@@ -21,10 +21,8 @@ export const About = () => {
         <div className={s.wrapper}>
             <CustomInput inputCustomStyle={s.name}
                 isValid={isValid}
-                
                 value={name} 
                 onInput={onInput} 
-                //style={{backgroundColor: isValid ? 'green' : 'red'}}
             />
             <Location />
             <div className={s.language}>
