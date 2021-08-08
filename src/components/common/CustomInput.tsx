@@ -2,7 +2,7 @@ import { useState } from "react"
 import { useEffect } from "react"
 
 type InputProps = {
-    isValid?: boolean 
+    isValid: boolean | null
     onInput: (e: React.ChangeEvent<HTMLInputElement>) => void
     value: string
     onKeyDown?: (e: React.KeyboardEvent) => void
@@ -20,13 +20,21 @@ export const CustomInput = ({ isValid, onInput, onKeyDown, value, inputCustomSty
         setValue(value)
     }, [value])
 
-    return <span className={isValid ? isValid ? 'inputCorrect' : 'inputIncorrect' : ''}>
+    const spanClassName = () => {
+        if (isValid === null) return ''
+        return isValid ? 'inputCorrect' : 'inputIncorrect'
+    }
+
+    const inputClassName = () => {
+        if (isValid === null) return `${inputCustomStyle ? inputCustomStyle : ''} textInput`
+        return `${inputCustomStyle ? inputCustomStyle : ''} textInput ${isValid ? 'inputFocusCorrect' : 'inputFocusIncorrect'}`
+    }
+
+    return <span className={spanClassName()}>
         <input value={inputValue} 
             onInput={onInput} 
             onKeyDown={onKeyDown} 
-            className={
-                `${inputCustomStyle ? inputCustomStyle : ''} textInput ${isValid ? isValid ? 'inputFocusCorrect' : 'inputFocusIncorrect' : ''}`
-            }
+            className={inputClassName()}
             onFocus={onFocus}
             onBlur={onBlur}
             ref={inputRef}

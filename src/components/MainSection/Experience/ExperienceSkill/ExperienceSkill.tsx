@@ -18,7 +18,6 @@ export const ExperienceSkill = (props: ExperienceSkillProps) => {
 
     const [experience, setExperience] = useState(props.experience)
     const [isEdit, setIsEdit] = useState(false)
-    const [isValid, setIsValid] = useState(true)
 
     useEffect(() => {
         setExperience(props.experience)
@@ -60,7 +59,9 @@ export const ExperienceSkill = (props: ExperienceSkillProps) => {
 
     return <div className={s.wrapper}>
         <p className={s.skill}>{props.skill}</p> 
-        <CustomInput inputCustomStyle={s.input}
+        <CustomInput 
+            isValid={null}
+            inputCustomStyle={s.input}
             value={isEdit ? experience.toString() : experience + ' years'} 
             onFocus={onFocus}
             onKeyDown={onKeyDown} 
