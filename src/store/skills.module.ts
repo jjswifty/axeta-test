@@ -1,19 +1,19 @@
-import { Skill } from './../interfaces/Skill';
+import { ISkill } from './../interfaces/Skill';
 import { StoreonModule } from 'storeon'
 
 export type SkillsState = {
-    skills: Skill[]
+    skills: ISkill[]
 }
 
 export type SkillsEvents = {
     'skills/set/skill': {
-        newSkill: Skill
+        newSkill: ISkill
     }
     'skills/remove/skill': {
         index: number
     }
     'skills/change/skill': {
-        newSkill: Skill
+        newSkill: ISkill
         index: number
     }
 }

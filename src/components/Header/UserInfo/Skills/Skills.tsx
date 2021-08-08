@@ -1,18 +1,22 @@
-import { useState } from "react"
+import { useEffect } from "react"
+import { useRef, useState } from "react"
 import { useStoreon } from 'storeon/react'
-import { Skill } from "../../../../interfaces/Skill"
+import { ISkill } from "../../../../interfaces/Skill"
 import { isValueLetter } from "../../../../utils/regexUtils"
+import { CustomInput } from "../../../common/CustomInput"
+import { Skill } from "./Skill/Skill"
+import s from './Skills.module.sass'
 
 export const Skills = () => {
 
     const { dispatch, skills } = useStoreon('skills')
     const [isValid, setIsValid] = useState(true)
     const [isEdit, setIsEdit] = useState(false)
+    const inputRef: React.RefObject<HTMLInputElement> = useRef(null)
     const [newSkill, setNewSkill] = useState({
         skill: '',
         experience: 0
-    } as Skill)
-
+    } as ISkill)
 
     const onInput = (e: React.ChangeEvent<HTMLInputElement>) => {
         if (!isValueLetter(e.target.value)) setIsValid(false)
@@ -36,19 +40,26 @@ export const Skills = () => {
         }
     }
 
+    useEffect(() => {
+        if (isEdit) {
+            console.log('focus')
+            inputRef.current?.focus()
+        }
+    }, [isEdit])
+
     return (
-        <div>
+        <div className={s.wrapper}>
+            {skills.map((e: ISkill, index: number) => <Skill index={index} skill={e.skill} key={index}/>)}
             {
-                skills.map((e: Skill, index: number) => {
-                    return <div key={index} onClick={() => dispatch('skills/remove/skill', {index})}>{e.skill}</div>
-                })
-            }
-            {
-                isEdit ? <input value={newSkill.skill} 
+                isEdit ? <CustomInput 
+                    inputRef={inputRef}
+                    isValid={isValid}
+                    value={newSkill.skill} 
                     onInput={onInput} 
-                    onKeyDown={onKeyDown} 
-                    style={{backgroundColor: isValid ? 'green' : 'red'}}/> 
-                : <button onClick={() => setIsEdit(true)}>+</button>
+                    onKeyDown={onKeyDown}
+                    inputCustomStyle={s.inputFont}
+                /> 
+                : <button onClick={() => setIsEdit(true)} className={s.plus}></button>
             }
         </div>
     )

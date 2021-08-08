@@ -1,4 +1,4 @@
-export interface Skill {
+export interface ISkill {
     skill: string
     experience: number 
 }
