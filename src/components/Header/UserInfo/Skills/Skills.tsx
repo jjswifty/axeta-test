@@ -40,11 +40,12 @@ export const Skills = () => {
         }
     }
 
+    const onBlur = () => {
+        setIsEdit(false)
+    }
+
     useEffect(() => {
-        if (isEdit) {
-            console.log('focus')
-            inputRef.current?.focus()
-        }
+        if (isEdit) inputRef.current?.focus()
     }, [isEdit])
 
     return (
@@ -58,6 +59,7 @@ export const Skills = () => {
                     onInput={onInput} 
                     onKeyDown={onKeyDown}
                     inputCustomStyle={s.inputFont}
+                    onBlur={onBlur}
                 /> 
                 : <button onClick={() => setIsEdit(true)} className={s.plus}></button>
             }
