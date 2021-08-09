@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/axeta-test/static/css/main.12864c93.chunk.css",
-    "main.js": "/axeta-test/static/js/main.9545df16.chunk.js",
-    "main.js.map": "/axeta-test/static/js/main.9545df16.chunk.js.map",
+    "main.css": "/axeta-test/static/css/main.b0b5a96a.chunk.css",
+    "main.js": "/axeta-test/static/js/main.1df63112.chunk.js",
+    "main.js.map": "/axeta-test/static/js/main.1df63112.chunk.js.map",
     "runtime-main.js": "/axeta-test/static/js/runtime-main.5fe1c022.js",
     "runtime-main.js.map": "/axeta-test/static/js/runtime-main.5fe1c022.js.map",
     "static/js/2.59891906.chunk.js": "/axeta-test/static/js/2.59891906.chunk.js",
@@ -10,7 +10,7 @@
     "static/js/3.624f7aef.chunk.js": "/axeta-test/static/js/3.624f7aef.chunk.js",
     "static/js/3.624f7aef.chunk.js.map": "/axeta-test/static/js/3.624f7aef.chunk.js.map",
     "index.html": "/axeta-test/index.html",
-    "static/css/main.12864c93.chunk.css.map": "/axeta-test/static/css/main.12864c93.chunk.css.map",
+    "static/css/main.b0b5a96a.chunk.css.map": "/axeta-test/static/css/main.b0b5a96a.chunk.css.map",
     "static/js/2.59891906.chunk.js.LICENSE.txt": "/axeta-test/static/js/2.59891906.chunk.js.LICENSE.txt",
     "static/media/avatarImg.b8dbd9dc.png": "/axeta-test/static/media/avatarImg.b8dbd9dc.png",
     "static/media/Avatar.module.sass": "/axeta-test/static/media/changeButton.56adb455.svg",
@@ -21,7 +21,7 @@
   "entrypoints": [
     "static/js/runtime-main.5fe1c022.js",
     "static/js/2.59891906.chunk.js",
-    "static/css/main.12864c93.chunk.css",
-    "static/js/main.9545df16.chunk.js"
+    "static/css/main.b0b5a96a.chunk.css",
+    "static/js/main.1df63112.chunk.js"
   ]
 }
