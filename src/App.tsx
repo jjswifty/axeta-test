@@ -13,11 +13,9 @@ const App = () => {
             <StoreContext.Provider value={store}>
                 <div className="App">
                     <Header />
-                    <main>
-                        <Layout>
-                            <MainSection />
-                        </Layout>
-                    </main>
+                    <Layout>
+                        <MainSection />
+                    </Layout>
                 </div>
             </StoreContext.Provider>
         </YMaps>

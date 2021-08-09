@@ -16,6 +16,7 @@ type InputProps = {
 export const CustomInput = ({ isValid, onInput, onKeyDown, value, inputCustomStyle, inputRef, onBlur, onFocus }: InputProps) => {
 
     const [inputValue, setValue] = useState(value)
+    const randomId = generatePseudoRandomId().toString()
 
     useEffect(() => {
         setValue(value)
@@ -38,7 +39,6 @@ export const CustomInput = ({ isValid, onInput, onKeyDown, value, inputCustomSty
         return isValid ? '' : <label id={randomId} className="errDesc"></label> 
     }
 
-    const randomId = generatePseudoRandomId().toString()
 
     return <div style={{display: 'flex', alignItems: 'center', width: 'fit-content'}}> 
         <span className={getSpanClassName()} >

@@ -9,28 +9,28 @@ import { ClientsQoute } from "./ClientsQoute"
 import { AmazingQoute } from "./AmazingQoute"
 
 export const MainSection = () => {
-    return <section className={s.wrapper}>
-        <div className={s.topInfo}>
-            <div className={s.expSection}>
+    return <main className={s.wrapper}>
+        <section className={s.topInfo}>
+            <section className={s.expSection}>
                 <Portfolio />
                 <Experience />
-            </div>
-            <div className={s.codeSection}>
+            </section>
+            <section className={s.codeSection}>
                 <SampleCode />
                 <div className={s.info}>
                     <Availability/>
                     <PreferredEnviroment />
                 </div>
-            </div>
-        </div>
-        <div className={s.bottomInfo}>
-            <div className={s.quotesSection}>
+            </section>
+        </section>
+        <section className={s.bottomInfo}>
+            <section className={s.quotesSection}>
                 <ClientsQoute />
                 <AmazingQoute />
-            </div>
-            <div className={s.mapSection}>
+            </section>
+            <section className={s.mapSection}>
                 <YMap />
-            </div>
-        </div>
-    </section>
+            </section>
+        </section>
+    </main>
 }
