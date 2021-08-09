@@ -22,6 +22,5 @@ export const Portfolio = () => {
                 )
             }
         </div>
-        
     </div>
 }

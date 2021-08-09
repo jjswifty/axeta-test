@@ -1,11 +1,20 @@
 .wrapper
     padding-right: 10px
     max-width: 270px
+    @media screen and ( max-width: 1100px )
+        max-width: 100%
+        width: 100%
+        display: flex
+        align-items: center
+        flex-direction: column
     h1
         font-weight: 500
         line-height: 24px
         padding-bottom: 24px
     .links
+        @media screen and ( max-width: 1100px )
+            width: 100%
+            align-items: center
         display: flex
         flex-direction: column
         padding-left: 19px
@@ -18,6 +27,8 @@
             margin: 8px 0
             position: relative
             color: #3483CC
+            @media screen and ( max-width: 1100px )
+                width: fit-content
             &:hover
                 color: #EB5757
             &::before
