@@ -4,6 +4,7 @@
     margin-right: 8px
     margin-top: 2px
     position: relative
+    
     &:hover
         background: #666666
     p
@@ -11,6 +12,8 @@
         padding: 4px 8px
         line-height: 16px
         font-size: 14px
+        @media screen and ( max-width: 720px )
+            margin: 2px
     &:hover span
         position: absolute
         content: url('./../../../../../assets/img/error.svg')
