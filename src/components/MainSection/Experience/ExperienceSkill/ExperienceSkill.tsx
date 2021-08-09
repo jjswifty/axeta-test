@@ -21,7 +21,7 @@ export const ExperienceSkill = (props: ExperienceSkillProps) => {
 
     useEffect(() => {
         setExperience(props.experience)
-    }, [props.experience])
+    }, [props.experience, props.index, props.skill])
 
     const onInput = (e: React.ChangeEvent<HTMLInputElement>) => {
         if (!isValueNumber(Number(e.target.value))) e.preventDefault()
@@ -41,9 +41,9 @@ export const ExperienceSkill = (props: ExperienceSkillProps) => {
     }
 
     const onKeyDown = (e: React.KeyboardEvent) => {
-        setIsEdit(true)
         if (e.key === 'Enter') {
             validateAndDispatch()
+            setIsEdit(false)
         }
     }
 
@@ -62,11 +62,11 @@ export const ExperienceSkill = (props: ExperienceSkillProps) => {
         <CustomInput 
             isValid={null}
             inputCustomStyle={s.input}
-            value={isEdit ? experience.toString() : experience + ' years'} 
+            value={isEdit ? experience.toString() : experience.toString() + ' years'} 
             onFocus={onFocus}
             onKeyDown={onKeyDown} 
             onInput={onInput}
             onBlur={onBlur}
-            />
+        />
     </div>
 }

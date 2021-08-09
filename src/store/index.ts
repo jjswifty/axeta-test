@@ -10,6 +10,9 @@ export type StoreEvents = SkillsEvents &
 
 const store = createStoreon<StoreState, StoreEvents>([skillsModule, locationModule])
 
+// @ts-expect-error
+window.store = store
+
 export {
     store,
     skillsModule,

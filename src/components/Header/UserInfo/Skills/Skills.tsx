@@ -26,16 +26,18 @@ export const Skills = () => {
             experience: 0
         })
     }
+    //console.log(skills, 'after dispatch')
 
     const onKeyDown = (e: React.KeyboardEvent) => {
         if (e.key === 'Enter') {
             if (!isValueLetter(newSkill.skill)) return
+            if (skills.some((skill: ISkill) => skill.skill === newSkill.skill)) return
             dispatch('skills/set/skill', {newSkill})
             setNewSkill({
                 skill: '',
                 experience: 0
             })
-            setIsValid(false)
+            setIsValid(true)
             setIsEdit(false)
         }
     }
@@ -50,7 +52,9 @@ export const Skills = () => {
 
     return (
         <div className={s.wrapper}>
+            
             {skills.map((e: ISkill, index: number) => <Skill index={index} skill={e.skill} key={index}/>)}
+            
             {
                 isEdit ? <CustomInput 
                     inputRef={inputRef}
