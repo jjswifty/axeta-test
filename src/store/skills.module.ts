@@ -51,7 +51,6 @@ export const skillsModule: StoreonModule<SkillsState, SkillsEvents> = store => {
     store.on('skills/change/skill', (state, event) => {
         state.skills[event.index] = event.newSkill
         const sortedState = state.skills.sort((a, b) => b.experience - a.experience)
-        console.log(sortedState, 'sortedState')
         return {
             skills: [...sortedState]
         }

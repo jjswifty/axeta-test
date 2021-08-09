@@ -89,6 +89,9 @@ body
     background: rgba(0, 0, 0, 0)
     border: none
     outline: none
+    position: relative
+    width: 100%
+    max-width: 360px
 
 .inputFocusCorrect
 	&:focus
@@ -99,16 +102,13 @@ body
 	background: rgba(0, 0, 0, 0.06)
 	border-bottom: 1px solid #EB5757
 
-
-
-
-
 .errDesc
+    min-width: 105px
+    margin-left: 8px
     &:after
-        position: absolute
         content: ' Error Description'
         color: #EB5757
-        min-width: 105px
+        min-width: 140px
         font:
             family: Roboto
             style: normal

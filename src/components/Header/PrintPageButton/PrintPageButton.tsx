@@ -1,6 +1,8 @@
+import s from './PrintPageButton.module.sass'
+
 export const PrintPageButton = () => {
     return (
-        <div>
+        <div className={s.wrapper}>
             <button>Print this page</button>
         </div>
     )

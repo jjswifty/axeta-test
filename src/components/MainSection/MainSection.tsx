@@ -15,7 +15,6 @@ export const MainSection = () => {
                 <Portfolio />
                 <Experience />
             </div>
-            
             <div className={s.codeSection}>
                 <SampleCode />
                 <div className={s.info}>

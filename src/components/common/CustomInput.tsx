@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { useEffect } from "react"
+import { generatePseudoRandomId } from "../../utils/utils"
 
 type InputProps = {
     isValid: boolean | null
@@ -20,33 +21,38 @@ export const CustomInput = ({ isValid, onInput, onKeyDown, value, inputCustomSty
         setValue(value)
     }, [value])
 
+    const isValidNullStatus = isValid === null
+
     const getSpanClassName = () => {
-        if (isValid === null) return ''
+        if (isValidNullStatus) return ''
         return isValid ? 'inputCorrect' : 'inputIncorrect'
     }
 
     const getInputClassName = () => {
-        if (isValid === null) return `${inputCustomStyle ? inputCustomStyle : ''} textInput`
+        if (isValidNullStatus) return `${inputCustomStyle ? inputCustomStyle : ''} textInput`
         return `${inputCustomStyle ? inputCustomStyle : ''} textInput ${isValid ? 'inputFocusCorrect' : 'inputFocusIncorrect'}`
     }
 
     const errorDesc = () => {
-        if (isValid === null) return 
-        return isValid ? '' : <span className="errDesc"></span> 
+        if (isValidNullStatus) return 
+        return isValid ? '' : <label id={randomId} className="errDesc"></label> 
     }
 
-    return <span className={getSpanClassName()}>
-        <input value={inputValue} 
-            onInput={onInput} 
-            onKeyDown={onKeyDown} 
-            className={getInputClassName()}
-            onFocus={onFocus}
-            onBlur={onBlur}
-            ref={inputRef}
-            style={{position: 'relative'}}
-        />
-        {
-            errorDesc()
-        }
-    </span>
+    const randomId = generatePseudoRandomId().toString()
+
+    return <div style={{display: 'flex', alignItems: 'center', width: 'fit-content'}}> 
+        <span className={getSpanClassName()} >
+            <input name={randomId}
+                value={inputValue} 
+                onInput={onInput} 
+                onKeyDown={onKeyDown} 
+                className={getInputClassName()}
+                onFocus={onFocus}
+                onBlur={onBlur}
+                ref={inputRef}
+                style={{}} 
+            />
+        </span>
+        {errorDesc()}
+    </div>
 }
