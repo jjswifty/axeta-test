@@ -5,11 +5,13 @@ import s from './Avatar.module.sass'
 export const Avatar = () => {
 
     const [avatar, setAvatar] = useState<string>()
+    const allowedTypes = ["image/png", "image/jpeg", "image/jpg"]
 
     const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         if (e.target.files && e.target.files[0]) {
-            if (e.target.files[0].type !== "image/png") return
-            setAvatar(URL.createObjectURL(e.target.files[0]))
+            if (allowedTypes.some((el: string) => el === e.target.files?.[0].type)) {
+                setAvatar(URL.createObjectURL(e.target.files[0]))
+            }
         }
     }
 
