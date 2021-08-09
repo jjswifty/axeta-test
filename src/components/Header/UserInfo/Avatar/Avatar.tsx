@@ -7,7 +7,10 @@ export const Avatar = () => {
     const [avatar, setAvatar] = useState<string>()
 
     const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        if (e.target.files && e.target.files[0]) setAvatar(URL.createObjectURL(e.target.files[0]))
+        if (e.target.files && e.target.files[0]) {
+            if (e.target.files[0].type !== "image/png") return
+            setAvatar(URL.createObjectURL(e.target.files[0]))
+        }
     }
 
     return (
@@ -23,7 +26,6 @@ export const Avatar = () => {
                     <input type="file" onChange={onChange}/>
                 </label>
             </div>
-            
         </div>
     )
 }
